@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>La historia que no se cuenta</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>LA HISTORIA QUE NO SE CUENTA</h1>
+      <p>Los vencedores de la Segunda Guerra Mundial</p>
+    </header>
+
+    <main>
+      <section class="contenido">
+        <div class="texto">
+          <h2 id="titulo"></h2>
+
+          <p id="concepto"></p>
+        </div>
+
+        <div class="contenedor-imagen">
+          <img id="imagen" src="" alt="Imagen histórica" />
+        </div>
+      </section>
+    </main>
+
+    <nav class="navegacion">
+      <button id="anterior" onclick="cambiarPagina(-1)">← Anterior</button>
+
+      <span id="numero"></span>
+
+      <button id="siguiente" onclick="cambiarPagina(1)">Siguiente →</button>
+    </nav>
+
+    <footer>
+      <p>Historia, memoria y reflexión | 1939 - 1945</p>
+    </footer>
+
+    <script>
+      const paginas = [
+        {
+          titulo: "01. La victoria y su relato",
+
+          concepto: `En 1945 terminó la Segunda Guerra Mundial con la derrota de la Alemania nazi, Italia y Japón.
+
+Los principales vencedores fueron Estados Unidos, la Unión Soviética, Reino Unido, China y Francia.
+
+Sin embargo, la victoria no tuvo una sola interpretación. Cada país construyó su propio relato sobre el conflicto, destacando sus sacrificios, sus logros militares y su contribución.
+
+La victoria también significó el comienzo de una nueva lucha por el poder y la influencia mundial.`,
+
+          imagen: "victoria.jpg",
+        },
+
+        {
+          titulo: "02. Los acuerdos entre vencedores",
+
+          concepto: `En 1945, los líderes de Estados Unidos, Reino Unido y la Unión Soviética se reunieron en las conferencias de Yalta y Potsdam.
+
+En estas reuniones discutieron el futuro de Alemania, la reorganización de Europa y las condiciones de la paz.
+
+Alemania quedó dividida en cuatro zonas de ocupación, administradas por Estados Unidos, Reino Unido, Francia y la Unión Soviética.
+
+Aunque los vencedores habían luchado juntos contra el nazismo, sus intereses políticos comenzaron a enfrentarse.
+
+Estos acuerdos marcaron el inicio de una nueva división mundial.`,
+
+          imagen: "hitler.jpeg",
+        },
+
+        {
+          titulo: "03. Las contradicciones entre vencedores",
+
+          concepto: `Aunque los Aliados defendieron la libertad y la derrota del fascismo, también protagonizaron acciones muy cuestionadas.
+
+Los bombardeos de ciudades como Dresde provocaron numerosas víctimas civiles.
+
+En agosto de 1945, Estados Unidos lanzó bombas atómicas sobre Hiroshima y Nagasaki, causando una destrucción humana y material devastadora.
+
+También se produjeron desplazamientos forzados, represalias y abusos contra civiles por parte de fuerzas vencedoras.
+
+Estos acontecimientos muestran que la victoria militar no estuvo libre de contradicciones morales y humanas.`,
+
+          imagen: "contradiccion.jpg",
+        },
+
+        {
+          titulo: "04. El mundo después de 1945",
+
+          concepto: `Después de la guerra, el mundo experimentó una profunda transformación política, económica y social.
+
+Estados Unidos y la Unión Soviética surgieron como las dos grandes superpotencias.
+
+Sus diferencias ideológicas dieron origen a la Guerra Fría, una rivalidad que dividió al mundo en dos grandes bloques.
+
+Alemania y Berlín quedaron divididas y Europa comenzó a reconstruirse.
+
+En 1945 también se fundó la Organización de las Naciones Unidas (ONU), con el propósito de promover la paz y la cooperación internacional.
+
+La guerra terminó, pero comenzó una nueva etapa de tensiones y conflictos internacionales.`,
+
+          imagen: "rivalidades.jpg",
+        },
+      ];
+
+      let paginaActual = 0;
+
+      function mostrarPagina() {
+        document.getElementById("titulo").textContent =
+          paginas[paginaActual].titulo;
+
+        document.getElementById("concepto").textContent =
+          paginas[paginaActual].concepto;
+
+        document.getElementById("imagen").src = paginas[paginaActual].imagen;
+
+        document.getElementById("numero").textContent =
+          paginaActual + 1 + " / " + paginas.length;
+
+        document.getElementById("anterior").disabled = paginaActual === 0;
+
+        document.getElementById("siguiente").disabled =
+          paginaActual === paginas.length - 1;
+      }
+
+      function cambiarPagina(direccion) {
+        paginaActual += direccion;
+
+        mostrarPagina();
+      }
+
+      mostrarPagina();
+    </script>
+  </body>
+</html>
